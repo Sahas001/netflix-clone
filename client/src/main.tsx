@@ -10,6 +10,7 @@ import BrowsePage from "./pages/BrowsePage.tsx";
 import WatchPage from "./pages/WatchPage.tsx";
 import { Provider } from "react-redux";
 import { store } from "./app/store.ts";
+import PrivateRoutes from "./utils/PrivateRoutes.tsx";
 
 const router = createBrowserRouter([
   {
@@ -29,12 +30,18 @@ const router = createBrowserRouter([
         element: <PlansPage />,
       },
       {
-        path: "browse",
-        element: <BrowsePage />,
-      },
-      {
-        path: "browse/watch/:id",
-        element: <WatchPage />,
+        path: "/browse",
+        element: <PrivateRoutes />,
+        children: [
+          {
+            path: "/browse",
+            element: <BrowsePage />,
+          },
+          {
+            path: "/browse/watch/:id",
+            element: <WatchPage />,
+          },
+        ],
       },
     ],
   },
