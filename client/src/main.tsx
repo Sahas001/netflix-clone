@@ -8,6 +8,8 @@ import LoginPage from "./pages/LoginPage.tsx";
 import PlansPage from "./pages/PlansPage.tsx";
 import BrowsePage from "./pages/BrowsePage.tsx";
 import WatchPage from "./pages/WatchPage.tsx";
+import { Provider } from "react-redux";
+import { store } from "./app/store.ts";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +42,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>,
 );
