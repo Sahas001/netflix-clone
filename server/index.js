@@ -12,6 +12,7 @@ app.get("/", (req, res) => {
 
 app.use("", require("./routes/movies"));
 app.use("/auth", require("./routes/auth"));
+app.use("/sub", require("./routes/sub"));
 
 app.listen(8080, () => {
   console.log("Listening on port 8080");
